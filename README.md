@@ -4,11 +4,16 @@ flutter学习项目
 #学习计划
 主要学习网站(Flutter中文站)：https://flutterchina.club/get-started/install/
 目标：能够从事flutter开发工作，掌握新技术。
+
  
 1.了解什么是flutter，他能干什么，他的优势，什么是热重载。
+
 https://segmentfault.com/a/1190000017164263?utm_source=tag-newest
+
 2.了解dart语言。
+
 https://www.shangyun51.com/articledetail?id=1341
+
 3.配置开发环境。
 https://blog.csdn.net/say_from_wen/article/details/90572907
 4.了解基本的UI控件weight（Text Button List等通用组件）
