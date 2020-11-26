@@ -15,6 +15,7 @@ https://segmentfault.com/a/1190000017164263?utm_source=tag-newest
 https://www.shangyun51.com/articledetail?id=1341
 
 3.配置开发环境。
+
 https://blog.csdn.net/say_from_wen/article/details/90572907
 
 4.了解基本的UI控件weight（Text Button List等通用组件）
