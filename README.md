@@ -1,7 +1,7 @@
 # flutterstudy
 flutter学习项目
 
-#学习计划
+# 学习计划
 
 主要学习网站(Flutter中文站)：https://flutterchina.club/get-started/install/
 
@@ -38,5 +38,5 @@ https://blog.csdn.net/say_from_wen/article/details/90572907
 
 12.完善项目功能（实现一个中等左右项目）
 
-#联合维护学习
+# 联合维护学习
 
