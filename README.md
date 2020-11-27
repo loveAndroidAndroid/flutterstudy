@@ -40,4 +40,5 @@ https://blog.csdn.net/say_from_wen/article/details/90572907
 
 # 联合维护学习
 <a href="https://github.com/lingyun14">云</a>
-<a href="http://www.kopakash.com/entry">强</a>
+
+<a href="https://github.com/lzq879069670">强</a>
