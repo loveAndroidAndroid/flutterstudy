@@ -28,6 +28,8 @@ https://blog.csdn.net/say_from_wen/article/details/90572907
 
 7.如何构建一个release版本的发布APK
 
+https://flutterchina.club/android-release/   (补充打包aab命令：flutter build appbundle)
+
 8. 基于玩androidApi实现一个简易项目
 
 9.优化项目（架构设计方面）
