@@ -1,6 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'package:flutterwanandroid/components/Toast.dart';
+import 'package:flutterwanandroid/common/comon.dart';
+import 'package:flutterwanandroid/common/user.dart';
+import 'package:flutterwanandroid/components/ToastUtil.dart';
+import 'package:flutterwanandroid/data/api/ApiService.dart';
+import 'package:flutterwanandroid/data/model/UserModel.dart';
+import 'package:flutterwanandroid/utils/print_long.dart';
 
 void main() => runApp(MyApp());
 
@@ -47,17 +53,49 @@ class RandomWordsState extends State<RandomWords> {
       body: _buildSuggestions(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
-          Toast.toast(context, msg: "中间显示的 ");
-          // Toast.toast(context,msg: "中间显示的 ",position: ToastPostion.center);
-          // Toast.toast(context,msg: "顶部显示的 Toast",position: ToastPostion.top);
-          // Toast.toast(context,
-          // msg: "底部显示的 Toast", position: ToastPostion.bottom);
+          // ToastUtil.show(msg: "中间显示的 ");
+          // _register();
+          _login("zhangxiaowen1", "zhangxiaowen1");
         },
         child: Icon(Icons.navigation),
         backgroundColor: Colors.green,
       ),
     );
+  }
+
+  Future _login(String username, String password) async {
+    if ((null != username && username.length > 0) &&
+        (null != password && password.length > 0)) {
+      apiService.login((UserModel model, Response response) {
+        if (null != model) {
+          printLong(model.errorMsg);
+          if (model.errorCode == Constants.STATUS_SUCCESS) {
+            User().saveUserInfo(model, response);
+            ToastUtil.show(msg: "登录成功");
+          } else {
+            ToastUtil.show(msg: model.errorMsg);
+          }
+        }
+      }, (DioError error) {
+        print(error.response);
+      }, username, password);
+    } else {
+      ToastUtil.show(msg: "用户名或密码不能为空");
+    }
+  }
+
+  Future _register() async {
+    apiService.register((UserModel _userModel) {
+      if (_userModel != null) {
+        if (_userModel.errorCode == 0) {
+          ToastUtil.show(msg: "注册成功！");
+        } else {
+          ToastUtil.show(msg: _userModel.errorMsg);
+        }
+      }
+    }, (DioError error) {
+      print(error.response);
+    }, "zhangxiaowen1", "zhangxiaowen1");
   }
 
   void _pushSaved() {
