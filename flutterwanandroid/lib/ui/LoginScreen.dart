@@ -55,9 +55,9 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   Future _register(String username, String password) async {
-    _showLoading(context, "正在注册...");
     if ((null != username && username.length > 0) &&
         (null != password && password.length > 0)) {
+      _showLoading(context, "正在注册...");
       apiService.register((UserModel _userModel) {
         _dismissLoading(context);
         if (_userModel != null) {
@@ -249,8 +249,8 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   void LoginClick() async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new HomeScreen();
-    }));
+    await Navigator.of(context).pushAndRemoveUntil(
+        new MaterialPageRoute(builder: (context) => HomeScreen()),
+        (route) => route == null);
   }
 }
