@@ -2,6 +2,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterwanandroid/components/ToastUtil.dart';
+import 'package:flutterwanandroid/ui/MineScreen.dart';
 
 /// 登录页面
 class HomeScreen extends StatefulWidget {
@@ -18,6 +19,8 @@ class HomeScreenState extends State<HomeScreen> {
 
   final _saved = Set<WordPair>();
 
+  ScrollController _scrollController;
+
   @override
   Widget build(BuildContext context) {
     // final wordPair = WordPair.random();
@@ -26,18 +29,37 @@ class HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Startup Name Generator'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+          Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(10.0),
+            child: GestureDetector(
+              child: Text("我的", style: TextStyle(fontSize: 14.0)),
+              onTap:  (){
+                Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+                    return new MineScreen(saved: _saved);
+                  }));
+              },
+            ),
+          )
+
         ],
       ),
       body: _buildSuggestions(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ToastUtil.show(msg: "我是floatingActionButton");
+          _scrollController.animateTo(0, duration: new Duration(seconds: 1), curve: Curves.ease);
         },
         child: Icon(Icons.navigation),
         backgroundColor: Colors.green,
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = new ScrollController();
+
   }
 
   void _pushSaved() {
@@ -79,7 +101,7 @@ class HomeScreenState extends State<HomeScreen> {
       ),
       trailing: Icon(
         alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.blue : null,
+        color: alreadySaved ? Colors.red : null,
       ),
       onTap: () {
         setState(() {
@@ -96,6 +118,7 @@ class HomeScreenState extends State<HomeScreen> {
   Widget _buildSuggestions() {
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
+        controller: _scrollController,
         // 对于每个建议的单词对都会调用一次itemBuilder，然后将单词对添加到ListTile行中
         // 在偶数行，该函数会为单词对添加一个ListTile row.
         // 在奇数行，该函数会添加一个分割线widget，来分隔相邻的词对。
