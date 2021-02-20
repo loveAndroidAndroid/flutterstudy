@@ -249,11 +249,8 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   void LoginClick() async {
-    // await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-    //   return new HomeScreen();
-    // }));
     await Navigator.of(context).pushAndRemoveUntil(
         new MaterialPageRoute(builder: (context) => HomeScreen()),
-            (route) => route == null);
+        (route) => route == null);
   }
 }
