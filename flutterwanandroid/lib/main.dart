@@ -30,7 +30,7 @@ class MyAppState extends State<MyApp> {
         // primarySwatch: Colors.white,
         // visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: new SplashScreen(), // 启动页
+      home: new RandomWords(), // 启动页
     );
   }
 }
