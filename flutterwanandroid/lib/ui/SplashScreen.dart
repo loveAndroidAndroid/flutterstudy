@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterwanandroid/ui/LoginScreen.dart';
 import 'package:flutterwanandroid/utils/Utils.dart';
 
 /// 启动页面
@@ -15,11 +16,11 @@ class SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 2), () {
-      // Navigator.of(context).pushAndRemoveUntil(
-      // pushAndRemoveUntil 返回到根路由
-      //3秒后跳转首页
-      // new MaterialPageRoute(builder: (context) => MainScreen()),
-      // (route) => route == null);
+      Navigator.of(context).pushAndRemoveUntil(
+          // pushAndRemoveUntil 返回到根路由
+          // 3秒后跳转首页
+          new MaterialPageRoute(builder: (context) => LoginScreen()),
+          (route) => route == null);
     });
   }
 
